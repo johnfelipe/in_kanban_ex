@@ -79,8 +79,8 @@ class Settings {
 	
 	/**
 	 * Сохранение параметра
-	 * @param string	$param		Название параметра
-	 * @param mixed 	$value		Значение параметра
+	 * @param string $param	Название параметра
+	 * @param mixed $value	Значение параметра
 	 */
 	public function set( $param, $value )
 	{
@@ -118,6 +118,6 @@ class Settings {
 	}
         
         public function kanban_show_setting(){
-            echo 'dfgdfgdfg';
+            echo 'page setting';
         }
 }

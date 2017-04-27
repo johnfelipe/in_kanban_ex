@@ -15,6 +15,20 @@ namespace CPMKE;
  */
 class kanban_ex {
     public function __construct() {
-        echo 2112;
+        //echo "<script>Alert(2334);</script>";
+       $this->add_menu_kanban_user();
+    }
+    
+    public function add_menu_kanban_user() {  
+      // $task = new CPM_Pro_Task();
+       $task = \CPM_Pro_Task::getInstance();
+       $task->my_task_current_tab("asd");
+       
+       //$project = $task->get_mytasks( $user_id );
+      // $count   = $task->mytask_count( $user_id );
+  
+
+       
+        
     }
 }
