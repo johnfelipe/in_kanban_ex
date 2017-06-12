@@ -16,8 +16,10 @@ class Plugin{
         $this->url = $plugin_url;
         $this->setting = new settings(\CPMKE, $this);
         $this->kanban = new kanban_ex($this);
-                
     }
+    
+    
+  
     
 }
 
