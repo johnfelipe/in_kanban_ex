@@ -19,12 +19,14 @@ class in_kanban_shortcode {
         add_shortcode('in_kanban', array(__CLASS__, 'in_kanban_test'));
     }
     
+    //пример использования шорткода [in_kanban category="web" project="73" user="1"]
+    //создание шорткода
     static function in_kanban_test($atts){
         
         $atts = shortcode_atts( array(
-            'category'   => '0',
-            'project' => '0',
-            'user'  => '0',     
+            'category'   => '',
+            'project' => '',
+            'user'  => '',     
 	), $atts );
         
         $cat = $atts['category'];
@@ -33,16 +35,25 @@ class in_kanban_shortcode {
           
         
         $args = array(
-            'p' => $project_id,
-            'category'    => $cat,
-            'author_name' => $user,
+            'p' => $project_id, //номер поста / проекта
+            'category'    => $cat, //категория
+            'author_name' => $user, //имя пользователя 
             'post_type'   => 'cpm_project',
             'suppress_filters' => true,
         );
         
+        //получаем данные проекта
         $posts = query_posts( $args );
         
-        return print_r($posts);
+        //форма комментирования
+        $msg1 = cpm_comment_form($project_id);
+        
+        return  self::template_shortcode($msg1);
+    }
+    
+    //фунция отрисовки шорткода
+    static function template_shortcode($msg){
+        return $msg;
     }
     
 }
