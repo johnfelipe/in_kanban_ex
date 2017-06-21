@@ -17,9 +17,5 @@ class Plugin{
         $this->setting = new settings(\CPMKE, $this);
         $this->kanban = new kanban_ex($this);
     }
-    
-    
-  
-    
 }
 

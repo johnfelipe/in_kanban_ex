@@ -14,8 +14,17 @@ namespace CPMKE;
  * @author asiries335
  */
 class kanban_ex {
+    
+    private $parent_path;
     public function __construct() {
+        $this->parent_path = dirname(__FILE__);
       // $this->add_menu_kanban_user();
+    }
+    
+    public function get_kanban_template($template, $data = array()){
+        extract($data);
+        
+        require_once CMPKE_PATH_DIR."/". $template.'.php';    
     }
     
     public function add_menu_kanban_user() {  

@@ -14,7 +14,12 @@ namespace CPMKE;
  * @author asiries335
  */
 class in_kanban_shortcode {
+    private $parent_path;
     
+    function __construct() {
+        $this->parent_path = dirname( __FILE__ );
+    }
+
     static function init(){
         add_shortcode('in_kanban', array(__CLASS__, 'in_kanban_test'));
     }
@@ -31,31 +36,19 @@ class in_kanban_shortcode {
         
         $cat = $atts['category'];
         $project_id = $atts['project'];
-        $user = $atts['user'];
-          
-        
-        $args = array(
-            'p' => $project_id, //номер поста / проекта
-            'category'    => $cat, //категория
-            'author_name' => $user, //имя пользователя 
-            'post_type'   => 'cpm_project',
-            'suppress_filters' => true,
-        );
-        
+        $user_id = $atts['user'];
+          echo locate_template();
         //получаем данные проекта
-        $posts = query_posts( $args );
+
+        $task = \CPM_Pro_Task::getInstance();
+        $task_user = $task->get_mytasks($user_id);
         
-        //форма комментирования
         $msg1 = cpm_comment_form($project_id);
-        
-        return  self::template_shortcode($msg1);
-    }
+        $template = new kanban_ex(); 
+        return $template->get_kanban_template("views/task/index", $task_user);
     
-    //фунция отрисовки шорткода
-    static function template_shortcode($msg){
-        return $msg;
     }
-    
+       
 }
 
 in_kanban_shortcode::init();
