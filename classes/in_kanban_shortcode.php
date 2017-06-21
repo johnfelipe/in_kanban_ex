@@ -43,7 +43,12 @@ class in_kanban_shortcode {
         $task_user = $task->get_mytasks($user_id);
         $msg1 = cpm_comment_form($project_id);
         
-        return kanban_ex::get_kanban_template("views/task/index", $task_user);    
+        $data_user = [
+            "task_user" => $task_user,
+            "project_id" => $project_id,
+            "cat" => $cat
+            ];
+        return kanban_ex::get_kanban_template("views/task/index", $data_user);    
     }
        
 }
