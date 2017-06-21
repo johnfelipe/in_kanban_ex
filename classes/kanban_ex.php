@@ -21,7 +21,7 @@ class kanban_ex {
       // $this->add_menu_kanban_user();
     }
     
-    public function get_kanban_template($template, $data = array()){
+    public static function get_kanban_template($template, $data = array()){
         extract($data);
         
         require_once CMPKE_PATH_DIR."/". $template.'.php';    

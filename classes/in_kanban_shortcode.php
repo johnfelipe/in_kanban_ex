@@ -37,16 +37,13 @@ class in_kanban_shortcode {
         $cat = $atts['category'];
         $project_id = $atts['project'];
         $user_id = $atts['user'];
-          echo locate_template();
-        //получаем данные проекта
-
+        $data_user = array();   
+        
         $task = \CPM_Pro_Task::getInstance();
         $task_user = $task->get_mytasks($user_id);
-        
         $msg1 = cpm_comment_form($project_id);
-        $template = new kanban_ex(); 
-        return $template->get_kanban_template("views/task/index", $task_user);
-    
+        
+        return kanban_ex::get_kanban_template("views/task/index", $task_user);    
     }
        
 }
