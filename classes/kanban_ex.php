@@ -23,9 +23,10 @@ class kanban_ex {
     
     public static function get_kanban_template($template, $data = array()){
         extract($data);
-        
         require_once CMPKE_PATH_DIR."/". $template.'.php';    
     }
+    
+    
     
     public function add_menu_kanban_user() {  
       $this->register_post_type(); 

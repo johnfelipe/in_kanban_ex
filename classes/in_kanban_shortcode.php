@@ -37,7 +37,7 @@ class in_kanban_shortcode {
         $cat = $atts['category'];
         $project_id = $atts['project'];
         $user_id = $atts['user'];
-        $data_user = array();   
+        $data_user = [];   
         
         $task = \CPM_Pro_Task::getInstance();
         $task_user = $task->get_mytasks($user_id);
